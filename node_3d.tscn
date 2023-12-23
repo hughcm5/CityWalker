@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4k1bda30uhk7"]
+
+[ext_resource type="PackedScene" uid="uid://b4tgtg0j2dgh8" path="res://Starter-Kit-City-Builder-d0cef6ce3be67f4d343f831100a090cf58a769a3/models/road-straight.glb" id="1_i2m1w"]
+[ext_resource type="PackedScene" uid="uid://5kchntr735l" path="res://Starter-Kit-City-Builder-d0cef6ce3be67f4d343f831100a090cf58a769a3/models/road-straight-lightposts.glb" id="3_jq7fd"]
+[ext_resource type="PackedScene" uid="uid://c4ccm2qr5wa58" path="res://Starter-Kit-City-Builder-d0cef6ce3be67f4d343f831100a090cf58a769a3/models/road-corner.glb" id="4_w588s"]
+[ext_resource type="PackedScene" uid="uid://cnycdi6t5tj01" path="res://Starter-Kit-City-Builder-d0cef6ce3be67f4d343f831100a090cf58a769a3/models/building-small-a.glb" id="5_0xvyl"]
+[ext_resource type="PackedScene" uid="uid://m74mvao50wnm" path="res://Starter-Kit-City-Builder-d0cef6ce3be67f4d343f831100a090cf58a769a3/models/building-small-c.glb" id="6_ukrdg"]
+[ext_resource type="PackedScene" uid="uid://cabex7phym83m" path="res://character_body_3d.tscn" id="7_em5lb"]
+[ext_resource type="PackedScene" uid="uid://d0nnrx2y4px2v" path="res://Starter-Kit-City-Builder-d0cef6ce3be67f4d343f831100a090cf58a769a3/models/building-garage.glb" id="7_yp2gn"]
+[ext_resource type="PackedScene" uid="uid://bs52oa4h1vogu" path="res://ambulance.tscn" id="8_a6r55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ndeku"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Roads" type="MeshInstance3D" parent="."]
+
+[node name="road-straight" parent="Roads" instance=ExtResource("1_i2m1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.994695)
+
+[node name="road-straight-lightposts" parent="Roads" instance=ExtResource("3_jq7fd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00334558, -0.00154868, -3.97865)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Roads/road-straight-lightposts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306694, 0.492815, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Roads/road-straight-lightposts"]
+transform = Transform3D(-0.772823, 0.530604, -0.348144, -0.631139, -0.700005, 0.334152, -0.0663999, 0.477967, 0.875864, -0.308538, 0.480534, -0.0677452)
+omni_range = 0.381119
+
+[node name="road-straight2" parent="Roads" instance=ExtResource("1_i2m1w")]
+
+[node name="road-straight5" parent="Roads" instance=ExtResource("1_i2m1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00336003, -0.000992984, 1.98145)
+
+[node name="road-corner" parent="Roads/road-straight5" instance=ExtResource("4_w588s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1.00097)
+
+[node name="road-straight3" parent="Roads" instance=ExtResource("1_i2m1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000840008, -0.000248246, -0.994892)
+
+[node name="road-straight4" parent="Roads" instance=ExtResource("1_i2m1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00168002, -0.000496492, -1.98978)
+
+[node name="road-straight6" parent="Roads" instance=ExtResource("1_i2m1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00252002, -0.000744738, -2.98468)
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="building-small-a" parent="Buildings" instance=ExtResource("5_0xvyl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.998415, -0.00102611, -0.991596)
+
+[node name="building-small-c" parent="Buildings" instance=ExtResource("6_ukrdg")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 1.00085, -0.000168622, -0.989884)
+
+[node name="building-garage" parent="Buildings" instance=ExtResource("7_yp2gn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.983103, 0, -1.99053)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("7_em5lb")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 4, -4)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.479935, 0)
+shape = SubResource("BoxShape3D_ndeku")
+
+[node name="ambulance" parent="." instance=ExtResource("8_a6r55")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.11243, 0, -1.47738)
+script = null
